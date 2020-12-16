@@ -19,6 +19,21 @@ LogicalExpressionParser = Lark(r"""
 
 
 def transform(node, parsed_dict):
+    """
+    Parameters
+    ----------
+    node : lark.Tree
+        parsed expression tree
+    parsed_dict : dict
+        dict into which everything will be parsed from tree
+
+    Examples
+    --------
+    >>> tree: lark.Tree
+    >>> parsed_tree = {}
+    >>> transform(tree, parsed_tree)
+    >>> # Now dictionary contains data from tree
+    """
     parsed_dict['type'] = node.data
     parsed_dict['op'] = node.children[1]
     if node.data == 'leaf':
